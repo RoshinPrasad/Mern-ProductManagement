@@ -13,7 +13,13 @@ const PORT = process.env.PORT || 5000;
 mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement');
 
 
-app.use(cors());
+app.use(cors(
+  {
+      origin: ["https://clientappyo.vercel.app"],
+      methods: ["POST", "GET" , "PUT"],
+      credentials: true
+  }
+));
 
 app.use(express.json());
 
