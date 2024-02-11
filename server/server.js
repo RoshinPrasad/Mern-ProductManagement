@@ -12,13 +12,12 @@ const PORT = process.env.PORT || 5000;
 //not adding to env file for simplicity, but should be added in a real-world application
 mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority');
 
-
-const corsOptions = {
-  origin: 'https://clientappyo.vercel.app',
-  methods: ['GET', 'POST', 'PUT'],
+app.use(cors({
+    origin: ["https://clientappyo.vercel.app", "http://localhost:3000" ],
   credentials: true
-};
-app.use(cors(corsOptions));
+}));
+
+
 
 app.use(express.json());
 
