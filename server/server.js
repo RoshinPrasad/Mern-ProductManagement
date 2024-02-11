@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //not adding to env file for simplicity, but should be added in a real-world application
-mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement');
+mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority');
 
 
 const corsOptions = {
