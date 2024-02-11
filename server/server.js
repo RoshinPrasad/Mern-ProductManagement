@@ -14,9 +14,16 @@ mongoose.connect(
   "mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority"
 );
 
+const allowedOrigins = ["https://clientappyo.vercel.app", "http://localhost:5173"];
 app.use(
   cors({
-    origin: ["https://clientappyo.vercel.app", "http://localhost:5173"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
