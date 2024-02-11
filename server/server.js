@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongod
 
 
 const corsOptions = {
-  origin: 'http://clientappyo.vercel.app',
+  origin: 'https://clientappyo.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
 
 };
