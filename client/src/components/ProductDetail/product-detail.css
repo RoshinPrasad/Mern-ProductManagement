@@ -1,0 +1,55 @@
+.product-detail-container {
+  display: flex;
+  padding: 20px;
+  background-color: rgb(56, 60, 60);
+  height: 100v;
+  margin: 1%;
+  gap: 10%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.texty {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-left: 2%;
+}
+
+.product-las {
+  padding: 20px;
+  background-color: rgb(115, 121, 121);
+  height: 100v;
+  margin: 2%;
+  gap: 10%;
+  padding: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-detail-image-container {
+  flex: 1;
+}
+
+.product-detail-image-container img {
+  max-width: 120%;
+  height: auto;
+  padding: 0%;
+  border-radius: 10px;
+}
+
+.pricetag {
+  color: rgb(223, 255, 127);
+}
+
+.product-detail-info-container {
+  flex: 1;
+  transform: translateX(3%);
+  text-transform: uppercase;
+}
+
+.quantity-controls button {
+  margin: 0 5px;
+}
+
+.but {
+  background-color: rgb(19, 134, 4);
+}

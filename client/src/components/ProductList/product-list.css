@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #555353;
+  height: 100vh;
+}
+
+.sidebar-header h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar-content input[type="text"],
+.sidebar-content select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-top: -1%;
+}
+
+.product-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.product-card {
+  background-color: #544f4f;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+}
+
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 3/2;
+  height: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
+}
+
+.product-card {
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 0 10px rgba(237, 224, 224, 0.7);
+}
+
+.product-link {
+  display: block;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: -10px;
+  color: #ffffff;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-shadow: #555353;
+  text-transform: uppercase;
+}
+
+.card-text {
+  color: #bcda72;
+  font-weight: bold;
+}
