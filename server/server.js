@@ -18,7 +18,8 @@ const allowedOrigins = ["https://clientappyo.vercel.app", "http://localhost:5173
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests from allowedOrigins or allow all origins in development mode
+      if (!process.env.NODE_ENV || process.env.NODE_ENV === "development" || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
