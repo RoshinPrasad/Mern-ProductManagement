@@ -31,6 +31,8 @@ app.use(
 app.use(express.json());
 
 app.get("/", (req, res) => {
+  // Set the Access-Control-Allow-Origin header to the origin of the incoming request
+  res.set("Access-Control-Allow-Origin", req.headers.origin);
   res.send("hello");
 });
 
