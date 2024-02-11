@@ -18,10 +18,13 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT'],
   credentials: true
 };
-
 app.use(cors(corsOptions));
 
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('hello');
+});
 
 
 async function addInitialProducts() {
