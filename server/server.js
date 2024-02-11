@@ -1,85 +1,84 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const apiRoutes = require('./routes/apiRoutes');
-const errorHandler = require('./middlewares/errorHandler');
-const Product = require('./model/Product');
-require('dotenv').config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const apiRoutes = require("./routes/apiRoutes");
+const errorHandler = require("./middlewares/errorHandler");
+const Product = require("./model/Product");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 //not adding to env file for simplicity, but should be added in a real-world application
-mongoose.connect('mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority');
+mongoose.connect(
+  "mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority"
+);
 
-
-const corsOptions = {
-  origin: 'https://clientappyo.vercel.app',
-  methods: ['GET', 'POST', 'PUT'],
-  credentials: true
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: ["https://clientappyo.vercel.app", "http://localhost:5173"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('hello');
+app.get("/", (req, res) => {
+  res.send("hello");
 });
-
 
 async function addInitialProducts() {
   try {
     const products = [
       {
-        name: 'Enchanter',
+        name: "Enchanter",
         price: 1000,
-        description: 'The richness of enchanter',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/1.jpg',
+        description: "The richness of enchanter",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/1.jpg",
       },
       {
-        name: 'Darkleather',
+        name: "Darkleather",
         price: 2000,
-        description: 'Beauty of Darkleather',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/2.jpg',
+        description: "Beauty of Darkleather",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/2.jpg",
       },
       {
-        name: 'leptiShrinker',
+        name: "leptiShrinker",
         price: 2500,
-        description: 'Shallowing Rareness',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/3.jpg',
+        description: "Shallowing Rareness",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/3.jpg",
       },
       {
-        name: 'BambooDazzler',
+        name: "BambooDazzler",
         price: 3420,
-        description: 'Dazzling Charisma',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/4.jpg',
+        description: "Dazzling Charisma",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/4.jpg",
       },
       {
-        name: 'TrekStereo Flower',
+        name: "TrekStereo Flower",
         price: 1920,
-        description: 'Pure Sterotreking',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/5.jpg',
+        description: "Pure Sterotreking",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/5.jpg",
       },
       {
-        name: 'Randomogoinvilla',
+        name: "Randomogoinvilla",
         price: 8420,
-        description: 'Mutated Bougainvilla',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/6.jpg',
+        description: "Mutated Bougainvilla",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/6.jpg",
       },
       {
-        name: 'SunWitch Blossom',
+        name: "SunWitch Blossom",
         price: 6420,
-        description: 'Shiness of Blossom',
-        more: ' Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.',
-        image: '/7.jpg',
+        description: "Shiness of Blossom",
+        more: " Flowers come in a vast array of shapes, sizes, and colors, captivating humans and animals alike. Beyond their biological function, flowers hold symbolic meanings in various cultures, often representing love, beauty, purity, and remembrance.",
+        image: "/7.jpg",
       },
-      
     ];
 
     for (const product of products) {
@@ -93,14 +92,13 @@ async function addInitialProducts() {
       }
     }
 
-    console.log('Products added successfully');
+    console.log("Products added successfully");
   } catch (error) {
-    console.error('Error adding initial products:', error);
+    console.error("Error adding initial products:", error);
   }
 }
 
-
-app.use('/api', apiRoutes);
+app.use("/api", apiRoutes);
 
 app.use(errorHandler);
 
