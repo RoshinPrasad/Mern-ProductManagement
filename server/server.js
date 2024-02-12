@@ -14,25 +14,36 @@ mongoose.connect(
   "mongodb+srv://product:product@productmanagement.ycanggd.mongodb.net/productmanagement?retryWrites=true&w=majority"
 );
 
-const allowedOrigins = ['https://clientappyo.vercel.app'];
+const allowedOrigins = ["https://clientappyo.vercel.app"];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Methods", "PUT, POST, DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, X-Requested-With, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  // Set the Access-Control-Allow-Origin header to the origin of the incoming request
-  res.set("Access-Control-Allow-Origin", req.headers.origin);
-  res.send("hello");
+  res.send("Hello World!");
 });
 
 async function addInitialProducts() {
