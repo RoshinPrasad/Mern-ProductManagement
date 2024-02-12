@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://clientapi-roan.vercel.app/api',
+  baseURL: 'https://mern-products.onrender.com/api',
   // baseURL: 'http://localhost:5000/api',
 });
 
